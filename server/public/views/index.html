@@ -46,7 +46,16 @@
       <!-- See submitted books -->
       <section id="books" class="row">
         <h2>Book Listing</h2>
-        <div id="bookList" ng-repeat="book in books">
+        <div>
+          <label for="orderby">Order By</label>
+          <select name="orderby" id="orderby" ng-model="OrderBySelect">
+            <option value="title">Ascend</option>
+            <option value="reverse">Descend</option>
+          </select>
+        </div>
+        <div id="bookList" ng-repeat="book in books | orderBy:OrderBySelect:direction">
+         
+
           <div class="book row">
             <div class="three columns">
               <label for="title">Title:</label>
@@ -71,11 +80,7 @@
               <button class="comment" ng-click="displayComments(book._id)">Comments</button>
               <div ng-show="displayBookId == book._id">
                 <div ng-repeat="comment in book.comments">
-               <!--  <label for="orderby">Order By</label>
-                <select name="orderby" id="orderby" ng-model="">
-                  <option value="Asc">Asc</option>
-                  <option value="Dec">Dec</option>
-                </select> -->
+               
                   <h4>Post By: {{comment.postedBy}}</h4>
                   <p>
                     {{comment.content}}

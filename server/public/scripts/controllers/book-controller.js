@@ -5,7 +5,7 @@ app.controller('BookController', ['$scope', '$http', function ($scope, $http) {
   $scope.newComment = {};
 
   getBooks();
-
+  $scope.OrderBySelect = 'title';
   /** --- Scoped functions -- **/
   $scope.submitNewBook = function () {
     var data = $scope.newBook;
